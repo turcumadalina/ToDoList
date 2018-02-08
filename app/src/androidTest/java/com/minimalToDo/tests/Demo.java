@@ -11,10 +11,12 @@ import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
 import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
@@ -27,13 +29,6 @@ import static org.hamcrest.Matchers.is;
 @MediumTest
 public class Demo extends EspressoTestBase {
 
-    @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
-    public void testDeleteItem() throws Exception {
-        onView(allOf(withText("Item"), isCompletelyDisplayed())).check(matches(isDisplayed()));
-
-        onView(allOf(withText("Item"), isCompletelyDisplayed())).perform(swipeLeft());
-    }
-
     @Test(timeout = Timeouts.TEST_TIMEOUT_MEDIUM)
     public void testAppNameClickItemAndCheckRemindMe() throws Exception {
         onView(allOf(withText(R.string.app_name), isCompletelyDisplayed())).check(matches(isDisplayed()));
@@ -44,6 +39,28 @@ public class Demo extends EspressoTestBase {
 
         onView(allOf(withText(R.string.remind_me), isCompletelyDisplayed())).check(matches(isDisplayed()));
     }
+
+    @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
+    public void addNewItem() throws Exception {
+        onView(withId(R.id.addToDoItemFAB)).perform(click());
+
+        onView(withId(R.id.userToDoEditText)).perform(typeText("Item"));
+
+        Espresso.pressBack();
+
+        onView(withId(R.id.makeToDoFloatingActionButton)).perform(click());
+
+        onView(allOf(withText("Item"), isCompletelyDisplayed())).check(matches(isDisplayed()));
+    }
+
+    @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
+    public void testDeleteItem() throws Exception {
+        onView(allOf(withText("Item"), isCompletelyDisplayed())).check(matches(isDisplayed()));
+
+        onView(allOf(withText("Item"), isCompletelyDisplayed())).perform(swipeLeft());
+    }
+
+
 
     @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
     public void testMenuButton() throws Exception {
