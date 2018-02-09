@@ -5,6 +5,8 @@ import android.support.test.espresso.NoMatchingRootException;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiSelector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -19,7 +21,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 
-public class Helpers {
+public class Helpers extends EspressoTestBase {
 
     /**
      * Checks if the object is visible, by giving as a parameter only its matcher
@@ -96,5 +98,15 @@ public class Helpers {
                 return parent instanceof ViewGroup && parentMatcher.matches(parent) && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+    }
+
+    /**
+     * Gets the UIObject based on the UiSelector properties
+     *
+     * @param nameSpace NameSpace for the resourceId Eg, com.groupon.dev
+     * @param resourceId unique resource Id for the UI Object
+     */
+    public static UiObject getUiObjectByResourceId(String nameSpace, String resourceId) throws Exception {
+        return device.findObject(new UiSelector().resourceId(nameSpace + ":id/" + resourceId));
     }
 }

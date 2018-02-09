@@ -14,7 +14,7 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.avjindersinghsekhon.minimaltodo"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 23
         versionCode 3
         versionName "1.2"
@@ -69,4 +69,6 @@ dependencies {
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
     }
+
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.3'
 }
