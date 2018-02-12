@@ -16,15 +16,15 @@ import static org.hamcrest.Matchers.allOf;
 public class Home {
 
     private static boolean isYouDontHaveAnyTodosTextDisplayed() throws Exception {
-        return Helpers.checkIfUIObjectIsVisible(allOf(withText(R.string.no_to_dos), isCompletelyDisplayed()), 10);
+        return Helpers.checkIfUIObjectIsVisible( allOf( withText( R.string.no_to_dos ), isCompletelyDisplayed() ), 10 );
     }
 
     private static void deleteItems() throws Exception {
-        int childCount = Helpers.getRecyclerViewChildCount(withId(R.id.toDoRecyclerView));
+        int childCount = Helpers.getRecyclerViewChildCount( withId( R.id.toDoRecyclerView ) );
 
         for (int i = 0; i < childCount; i++) {
-            onView(allOf(withId(R.id.listItemLinearLayout), Helpers.childAtPosition(withId(R.id.toDoRecyclerView), i))).check(matches(isDisplayed()));
-            onView(allOf(withId(R.id.listItemLinearLayout), Helpers.childAtPosition(withId(R.id.toDoRecyclerView), i))).perform(swipeLeft());
+            onView( allOf( withId( R.id.listItemLinearLayout ), Helpers.childAtPosition( withId( R.id.toDoRecyclerView ), i ) ) ).check( matches( isDisplayed() ) );
+            onView( allOf( withId( R.id.listItemLinearLayout ), Helpers.childAtPosition( withId( R.id.toDoRecyclerView ), i ) ) ).perform( swipeLeft() );
         }
     }
 
@@ -34,6 +34,6 @@ public class Home {
     }
 
     public static void clickFAB() throws Exception {
-        onView( withId( R.id.addToDoItemFAB)).perform(click());
+        onView( withId( R.id.addToDoItemFAB ) ).perform( click() );
     }
 }
