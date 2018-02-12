@@ -4,6 +4,7 @@ import com.example.avjindersinghsekhon.minimaltodo.R;
 import com.minimalToDo.tests.Helpers;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
@@ -30,5 +31,9 @@ public class Home {
     public static void deleteItemsAndCheckIfYouDontHaveAnyTodosTextIsDisplayed() throws Exception {
         deleteItems();
         isYouDontHaveAnyTodosTextDisplayed();
+    }
+
+    public static void clickFAB() throws Exception {
+        onView( withId( R.id.addToDoItemFAB)).perform(click());
     }
 }

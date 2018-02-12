@@ -5,4 +5,5 @@ package com.minimalToDo.constants;
  */
 
 public class Strings {
+    public static final String MORE_OPTIONS = "More options";
 }
