@@ -1,21 +1,12 @@
 package com.minimalToDo.screens;
 
-
 import com.example.avjindersinghsekhon.minimaltodo.R;
-
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
-import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.not;
 
 /**
  * Created by madalina.turcu on 2/7/18.
@@ -51,7 +42,4 @@ public class AddNewItem {
     public static void clickDateOK() throws Exception {
         onView( withId( R.id.ok ) ).perform( click() );
     }
-
-
 }
-

@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import com.example.avjindersinghsekhon.minimaltodo.R;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.allOf;
+
 import com.minimalToDo.constants.Time;
 
 import junit.framework.AssertionFailedError;
@@ -23,9 +26,15 @@ import org.hamcrest.TypeSafeMatcher;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 public class Helpers extends EspressoTestBase {
+
+    public static boolean isItemDisplayed(String text) throws Exception {
+        return Helpers.checkIfUIObjectIsVisible(allOf(withText("text"), isCompletelyDisplayed()), 3);
+    }
 
     /**
      * Checks if the object is visible, by giving as a parameter only its matcher
@@ -50,6 +59,11 @@ public class Helpers extends EspressoTestBase {
         }
 
         return isVisible;
+    }
+
+    public static void clickOn( int id1) throws Exception{
+
+        onView(withId(id1)).perform(click());
     }
 
        /**
@@ -113,5 +127,4 @@ public class Helpers extends EspressoTestBase {
     public static UiObject getUiObjectByResourceId(String nameSpace, String resourceId) throws Exception {
         return device.findObject( new UiSelector().resourceId( nameSpace + ":id/" + resourceId ) );
     }
-
 }
