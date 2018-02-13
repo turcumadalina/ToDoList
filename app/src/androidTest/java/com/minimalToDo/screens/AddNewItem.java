@@ -19,27 +19,11 @@ public class AddNewItem {
         onView( withId( R.id.userToDoEditText ) ).perform( typeText( text ) );
     }
 
-    public static void clickRemindMe() throws Exception {
-        onView( withId( R.id.toDoHasDateSwitchCompat ) ).perform( click() );
-    }
-
-    public static void clickDate() throws Exception {
-        onView( withId( R.id.newTodoDateEditText ) ).perform( click() );
-    }
-
-    public static void clickCreate() throws Exception {
-        onView( withId( R.id.makeToDoFloatingActionButton ) ).perform( click() );
-    }
-
     public static void renameItem(String text) throws Exception {
         onView( withId( R.id.userToDoEditText ) ).perform( replaceText( text ) );
     }
 
     public static void clickItem(String text) throws Exception {
         onView( withText( text ) ).perform( click() );
-    }
-
-    public static void clickDateOK() throws Exception {
-        onView( withId( R.id.ok ) ).perform( click() );
     }
 }
