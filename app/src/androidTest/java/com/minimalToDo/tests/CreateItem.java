@@ -4,7 +4,6 @@ import com.example.avjindersinghsekhon.minimaltodo.R;
 import com.minimalToDo.constants.Timeouts;
 import com.minimalToDo.screens.AddNewItem;
 import com.minimalToDo.screens.Home;
-
 import org.junit.Test;
 
 /**
@@ -28,6 +27,7 @@ public class CreateItem extends EspressoTestBase {
         Helpers.clickOn(R.id.ok);
         Helpers.clickOn(R.id.makeToDoFloatingActionButton);
         Helpers.isItemDisplayed("Fisier2");
+        Helpers.isDateDisplayed(R.id.todoListItemTimeTextView);
         Home.deleteItemsAndCheckIfYouDontHaveAnyTodosTextIsDisplayed();
     }
 
@@ -39,5 +39,15 @@ public class CreateItem extends EspressoTestBase {
         AddNewItem.renameItem("Fisier3");
         Helpers.clickOn(R.id.makeToDoFloatingActionButton);
         Helpers.isItemDisplayed("Fisier3");
+    }
+
+    @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
+    public void testReorderItem() throws Exception {
+        Home.deleteItemsAndCheckIfYouDontHaveAnyTodosTextIsDisplayed();
+        AddNewItem.createNewItem("Fisier2");
+        Helpers.clickOn(R.id.makeToDoFloatingActionButton);
+        AddNewItem.createNewItem("Fisier3");
+        Helpers.clickOn(R.id.makeToDoFloatingActionButton);
+
     }
 }

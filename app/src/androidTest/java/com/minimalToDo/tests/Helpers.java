@@ -10,19 +10,14 @@ import android.support.test.uiautomator.UiSelector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
-
 import com.minimalToDo.constants.Time;
-
 import junit.framework.AssertionFailedError;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
@@ -34,6 +29,9 @@ public class Helpers extends EspressoTestBase {
 
     public static boolean isItemDisplayed(String text) throws Exception {
         return Helpers.checkIfUIObjectIsVisible(allOf(withText("text"), isCompletelyDisplayed()), 3);
+    }
+    public static boolean isDateDisplayed(int date1) throws Exception {
+        return Helpers.checkIfUIObjectIsVisible(allOf(withId(date1), isCompletelyDisplayed()), 3);
     }
 
     /**
@@ -66,7 +64,7 @@ public class Helpers extends EspressoTestBase {
         onView(withId(id1)).perform(click());
     }
 
-       /**
+     /**
      * Gets the recycler view size
      *
      * @param matcher viewMatcher
