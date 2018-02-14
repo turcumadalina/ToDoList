@@ -29,6 +29,7 @@ public class Demo extends EspressoTestBase {
 
     @Test(timeout = Timeouts.TEST_TIMEOUT_SHORT)
     public void testDeleteItem() throws Exception {
+
         onView(allOf(withText("Item"), isCompletelyDisplayed())).check(matches(isDisplayed()));
 
         onView(allOf(withText("Item"), isCompletelyDisplayed())).perform(swipeLeft());
