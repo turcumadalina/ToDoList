@@ -10,6 +10,9 @@ import android.support.test.uiautomator.UiSelector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
+
+import com.example.avjindersinghsekhon.minimaltodo.R;
 import com.minimalToDo.constants.Time;
 import junit.framework.AssertionFailedError;
 import org.hamcrest.Description;
@@ -47,6 +50,7 @@ public class Helpers extends EspressoTestBase {
 
         return isVisible;
     }
+
 
     /**
      * Gets the recycler view size
@@ -109,4 +113,33 @@ public class Helpers extends EspressoTestBase {
     public static UiObject getUiObjectByResourceId(String nameSpace, String resourceId) throws Exception {
         return device.findObject(new UiSelector().resourceId(nameSpace + ":id/" + resourceId));
     }
+
+    /**
+     * Gets the text from the matcher view
+     *
+     * @param matcher matcher
+     */
+    public static String getText(final Matcher<View> matcher) {
+        final String[] stringHolder = {null};
+        onView(matcher).perform(new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isAssignableFrom(TextView.class);
+            }
+
+            @Override
+            public String getDescription() {
+                return "getting text from a TextView";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                TextView tv = (TextView) view;
+                stringHolder[0] = tv.getText().toString();
+            }
+        });
+
+        return stringHolder[0];
+    }
+
 }
