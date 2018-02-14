@@ -114,7 +114,6 @@ public class Helpers extends EspressoTestBase {
         return device.findObject(new UiSelector().resourceId(nameSpace + ":id/" + resourceId));
     }
 
-
     /**
      * Gets the text from the matcher view
      *
@@ -144,7 +143,3 @@ public class Helpers extends EspressoTestBase {
     }
 
 }
-
-
-
-

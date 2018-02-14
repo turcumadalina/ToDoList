@@ -6,8 +6,8 @@ package com.minimalToDo.constants;
 
 public class Strings {
 
-    public static String task1=  "Grooming the dog.";
-    public static String task2=  "Clean the windows.";
-    public static String task3=  "Wash the dishes.";
-    public static String task4=  "Go shopping.";
+    public static String TASK1=  "Grooming the dog.";
+    public static String TASK2=  "Clean the windows.";
+    public static String TASK3=  "Wash the dishes.";
+    public static String TASK4=  "Go shopping.";
 }
